@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using XGames.Models;
 
+
 namespace XGames.Data
 {
     public class XGamesContext : DbContext
