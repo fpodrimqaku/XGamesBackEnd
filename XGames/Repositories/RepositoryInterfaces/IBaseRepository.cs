@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using XGames.Data;
+using XGames.DTModels;
 using XGames.Models;
 
 namespace XGames.Repositories.RepositoryInterfaces
@@ -29,5 +30,7 @@ namespace XGames.Repositories.RepositoryInterfaces
         public bool EntityExists(int id);
 
         public bool EntityChanged(T entity);
-    }
+
+        public Task<PaginatedList<T>> GetAllPaged(int? pageSize, int? pageIndex);
+        }
 }

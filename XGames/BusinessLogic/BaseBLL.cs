@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using XGames.BusinessLogic.BusinessLogicInterfaces;
 using XGames.Data;
+using XGames.DTModels;
 using XGames.Models;
 using XGames.Repositories;
 using XGames.Repositories.RepositoryInterfaces;
@@ -100,6 +101,11 @@ namespace XGames.BusinessLogic
                 return false;
 
             return BaseRepository.EntityChanged(entity);
+        }
+
+        public async Task<PageModel<T>> GetAllPaged(int? pageSize, int? pageIndex) {
+
+           return PageModel<T>.Create(await BaseRepository.GetAllPaged(pageSize,pageIndex));
         }
 
     }

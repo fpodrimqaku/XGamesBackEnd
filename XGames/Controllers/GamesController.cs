@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using XGames.BusinessLogic.BusinessLogicInterfaces;
-using XGames.Data;
+
+using XGames.DTModels;
 using XGames.Models;
 
 namespace XGames.Controllers
@@ -32,21 +33,24 @@ namespace XGames.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Game>> GetGame(int id)
         {
-            var game = await gamesBLL.GetById(id);
+            try {
+                var game = await gamesBLL.GetById(id);
+                if (game == null)
+                {
+                    return NotFound();
+                }
 
-            if (game == null)
-            {
-                return NotFound();
+                return game;
             }
-
-            return game;
+            catch (Exception exe) { return NotFound(); }
+            
         }
 
         // PUT: api/Games/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutGame(int id, Game game)
+        public async Task<ActionResult<Game>> PutGame(int id, Game game)
         {
             if (id != game.ID)
             {
@@ -69,7 +73,7 @@ namespace XGames.Controllers
                 }
             }
 
-            return NoContent();
+            return game;
         }
 
         // POST: api/Games
@@ -103,6 +107,11 @@ namespace XGames.Controllers
         private bool GameExists(int id)
         {
             return gamesBLL.EntityExists(id);
+        }
+
+        [HttpGet("paged")]
+        public async Task<ActionResult<PageModel<Game>>> getAllPaged(int ?pageIndex,int? pageSize) {
+            return await gamesBLL.GetAllPaged(pageIndex,pageSize);
         }
 
     }

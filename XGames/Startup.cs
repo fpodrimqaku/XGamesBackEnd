@@ -37,25 +37,24 @@ namespace XGames
 
             services.AddSingleton<IDateTime, SystemDateTime>();
             services.AddControllersWithViews();
-            services.AddDbContext<XGamesContext>(options =>
+            services.AddDbContextPool<XGamesContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("XGamesContext")));
+            
             services.AddSignalR();
 
-           
-            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
-            services.AddScoped(typeof(ICartRepository), typeof(CartRepository));
-            services.AddScoped(typeof(IGameRepository), typeof(GameRepository));
-            services.AddScoped(typeof(IGamePictureRepository), typeof(GamePictureRepository));
-            services.AddScoped(typeof(ILineItemRepository), typeof(LineItemRepository));
 
-
-            services.AddScoped(typeof(IBaseBLL<>), typeof(BaseBLL<>));
-            services.AddScoped(typeof(ICartBLL), typeof(CartBLL));
-            services.AddScoped(typeof(IGameBLL), typeof(GameBLL));
-            services.AddScoped(typeof(IGamePictureBLL), typeof(GamePictureBLL));
-            services.AddScoped(typeof(ILineItemBLL), typeof(LineItemBLL));
-
-
+             services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+             services.AddTransient(typeof(ICartRepository), typeof(CartRepository));
+             services.AddTransient(typeof(IGameRepository), typeof(GameRepository));
+             services.AddTransient(typeof(IGamePictureRepository), typeof(GamePictureRepository));
+             services.AddTransient(typeof(ILineItemRepository), typeof(LineItemRepository));
+            
+            
+             services.AddTransient(typeof(IBaseBLL<>), typeof(BaseBLL<>));
+             services.AddTransient(typeof(ICartBLL), typeof(CartBLL));
+             services.AddTransient(typeof(IGameBLL), typeof(GameBLL));
+             services.AddTransient(typeof(IGamePictureBLL), typeof(GamePictureBLL));
+             services.AddTransient(typeof(ILineItemBLL), typeof(LineItemBLL));
 
 
         }

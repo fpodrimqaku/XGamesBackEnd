@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using XGames.DTModels;
 using XGames.Models;
 
 namespace XGames.BusinessLogic.BusinessLogicInterfaces
@@ -26,5 +27,8 @@ namespace XGames.BusinessLogic.BusinessLogicInterfaces
         public bool EntityExists(int id);
 
         public bool EntityChanged(T entity);
-    }
+
+        public Task<PageModel<T>> GetAllPaged(int? pageSize, int? pageIndex);
+        
+        }
 }
