@@ -9,7 +9,7 @@ namespace XGames.Models
     {
      
         public string URI { get; set; }
-        public int? GameId { get; set; }
-        public Game? Game { get; set; }
+        public int GameId { get; set; }
+        public Game Game { get; set; }
     }
 }

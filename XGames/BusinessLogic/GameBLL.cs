@@ -13,6 +13,19 @@ namespace XGames.BusinessLogic
 {
     public class GameBLL : BaseBLL<Game> ,IGameBLL
     {
-        public GameBLL([FromServices]IGameRepository gameRepo) :base(gameRepo) { }
+        IGameRepository gameRepository;
+        public GameBLL([FromServices]IGameRepository gameRepo) :base(gameRepo) {
+            this.gameRepository = gameRepo;
+        }
+
+
+
+        public List<Game> GetAll()
+        {
+            return gameRepository.GetAll();
+        }
     }
+
+   
+   
 }

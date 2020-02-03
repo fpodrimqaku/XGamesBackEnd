@@ -26,6 +26,7 @@ namespace XGames.Repositories
 
         public DbSet<T> GetAllAsSet() {
             return _context.Set<T>();
+        
         }
 
         

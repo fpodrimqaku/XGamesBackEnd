@@ -15,25 +15,15 @@ namespace XGames.Repositories
         public GameRepository([FromServices]XGamesContext context) : base(context)
         {
 
-
           
 
-        }
 
-      //  public async Task<Game> GetById(int id)
-      //  {
-      //      Game entity = getDatabaseContext().Game.Where(item => item.ID==id).Include(i=>i.Pictures)
-      //          
-      //          .Single();
-      //      
-      //      if (entity == null)
-      //      {
-      //          throw new KeyNotFoundException();
-      //      }
-      //
-      //      return entity;
-      //  }
-      //
+        }
+        
+        public List<Game> GetAll()
+        {
+            return getDatabaseContext().Game.Include(item => item.Pictures).ToList();
+        }
 
     }
 }

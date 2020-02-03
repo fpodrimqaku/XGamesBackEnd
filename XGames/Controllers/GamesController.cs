@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 
 using System.Threading.Tasks;
-
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using XGames.BusinessLogic.BusinessLogicInterfaces;
 
 using XGames.DTModels;
 using XGames.Models;
+using XGames.DTModels;
 
 namespace XGames.Controllers
 {
@@ -17,16 +18,22 @@ namespace XGames.Controllers
     public class GamesController : ControllerBase
     {
         private readonly IGameBLL gamesBLL;
-        public GamesController(IGameBLL gameBLL)
+        private readonly IMapper _mapper;
+        public GamesController(IGameBLL gameBLL,IMapper mapper)
         {
             gamesBLL = gameBLL;
+            _mapper = mapper;
         }
 
         // GET: api/Games
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Game>>> GetGame()
+        public async Task<ActionResult<IEnumerable<GameDTO>>> GetGame()
         {
-            return  gamesBLL.GetAll();
+            
+            List<GameDTO> ienumerableDest = _mapper.Map<List<Game>,List<GameDTO>>(gamesBLL.GetAll());
+            return ienumerableDest;
+
+
         }
 
         // GET: api/Games/5

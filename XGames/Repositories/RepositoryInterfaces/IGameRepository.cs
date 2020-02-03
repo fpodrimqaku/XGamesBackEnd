@@ -10,6 +10,6 @@ namespace XGames.Repositories.RepositoryInterfaces
     public interface IGameRepository : IBaseRepository<Game>
     {
 
-    
+        public List<Game> GetAll();
     }
 }

@@ -11,7 +11,7 @@ using XGames.Repositories.RepositoryInterfaces;
 
 namespace XGames.BusinessLogic
 {
-    public class CartBLL : BaseBLL<Cart> , ICartBLL
+    public class CartBLL : BaseBLL<Cart> ,ICartBLL
     {
         public CartBLL([FromServices]ICartRepository CartRepo):base(CartRepo) { }
 

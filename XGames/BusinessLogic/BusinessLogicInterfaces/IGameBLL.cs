@@ -8,5 +8,7 @@ namespace XGames.BusinessLogic.BusinessLogicInterfaces
 {
     public interface IGameBLL:IBaseBLL<Game>
     {
+
+        public List<Game> GetAll();
     }
 }

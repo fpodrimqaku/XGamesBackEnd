@@ -17,6 +17,7 @@ using XGames.BusinessLogic;
 using XGames.BusinessLogic.BusinessLogicInterfaces;
 using XGames.Services.Time;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
 namespace XGames
 {
     public class Startup
@@ -31,17 +32,18 @@ namespace XGames
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+             services.AddControllers();
 
 
 
-            services.AddSingleton<IDateTime, SystemDateTime>();
-            services.AddControllersWithViews();
-            services.AddDbContextPool<XGamesContext>(options =>
+             services.AddSingleton<IDateTime, SystemDateTime>();
+             services.AddControllersWithViews();
+             services.AddDbContextPool<XGamesContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("XGamesContext")));
             
-            services.AddSignalR();
-
+             services.AddSignalR();
+             services.AddAutoMapper(typeof(Startup));
+           
 
              services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
              services.AddTransient(typeof(ICartRepository), typeof(CartRepository));
