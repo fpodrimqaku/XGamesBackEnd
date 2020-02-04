@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using XGames.BusinessLogic.BusinessLogicInterfaces;
-
 using XGames.DTModels;
 using XGames.Models;
 using XGames.DTModels;
