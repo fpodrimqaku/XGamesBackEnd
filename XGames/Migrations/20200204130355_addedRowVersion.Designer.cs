@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using XGames.Data;
 
 namespace XGames.Migrations
 {
     [DbContext(typeof(XGamesContext))]
-    partial class XGamesContextModelSnapshot : ModelSnapshot
+    [Migration("20200204130355_addedRowVersion")]
+    partial class addedRowVersion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,9 +43,7 @@ namespace XGames.Migrations
                         .HasColumnType("bit");
 
                     b.Property<bool>("isActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValueSql("1");
+                        .HasColumnType("bit");
 
                     b.Property<decimal>("total")
                         .HasColumnType("money");
@@ -96,9 +96,7 @@ namespace XGames.Migrations
                         .HasMaxLength(80);
 
                     b.Property<bool>("isActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValueSql("1");
+                        .HasColumnType("bit");
 
                     b.HasKey("ID");
 
@@ -130,9 +128,7 @@ namespace XGames.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("isActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValueSql("1");
+                        .HasColumnType("bit");
 
                     b.HasKey("ID");
 
@@ -166,9 +162,7 @@ namespace XGames.Migrations
                         .HasColumnType("rowversion");
 
                     b.Property<bool>("isActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValueSql("1");
+                        .HasColumnType("bit");
 
                     b.Property<int>("quantity")
                         .HasColumnType("int");

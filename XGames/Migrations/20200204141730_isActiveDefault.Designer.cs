@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using XGames.Data;
 
 namespace XGames.Migrations
 {
     [DbContext(typeof(XGamesContext))]
-    partial class XGamesContextModelSnapshot : ModelSnapshot
+    [Migration("20200204141730_isActiveDefault")]
+    partial class isActiveDefault
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
