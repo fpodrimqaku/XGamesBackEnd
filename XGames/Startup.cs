@@ -38,7 +38,7 @@ namespace XGames
             services.AddSingleton<IDateTime, SystemDateTime>();
             services.AddControllersWithViews();
             services.AddDbContextPool<XGamesContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("XGamesContext")));
+                    options.UseSqlServer(Configuration.GetConnectionString("localDbString")));
             
             services.AddSignalR();
 
